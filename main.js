@@ -7,11 +7,13 @@ $(document).ready( function() {
 
     var rulesObj = new Rules('data/rules.json');
     var shiftsObj = new Shifts('data/tableShifts.json');
+    var outputArea = document.getElementById("output-area")
 
 
     button.click(function() {
         const area = $('#input-area')[0];
-        document.getElementById("output-area").value = '';
+
+        outputArea.value = '';
 
         rulesObj.convertToObject();
         shiftsObj.convertToObject();
@@ -21,7 +23,7 @@ $(document).ready( function() {
 
         //prompt all lexical errors to console after lexical analysis is done
         result.errors.forEach( (error) => {
-            console.log(error.text + error.position + '.');
+            outputArea.value+= error.text + error.position + '.\n';
         });
 
         var syntaxParser = new SyntaxParser(rulesObj, shiftsObj);
@@ -29,7 +31,7 @@ $(document).ready( function() {
 
         const parsingResult = syntaxParser.checkSyntax();
 
-        console.log('Result of syntax and lexical analysis: ' + parsingResult);
+        outputArea.value += 'Result of syntax and lexical analysis: ' + parsingResult + '\n';
     });
 
     console.log('Hello from Thomas and Jakub');
