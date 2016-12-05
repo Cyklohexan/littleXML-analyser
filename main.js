@@ -10,8 +10,17 @@ $(document).ready( function() {
 
         console.log(area.value);
         var analyzer = new LexicalAnalyser(area.value);
+        var result = analyzer.analyze();
 
-        console.log(analyzer.analyze());
+        result.tokens.forEach( (token) => {
+            console.log(token.key + '  ..  ' + token.value);
+        });
+
+        result.errors.forEach( (error) => {
+            console.log(error.text + error.position + '.');
+        });
+
+
     });
 
     console.log('Hello from Thomas and Jakub');
