@@ -1,8 +1,8 @@
-class Rules{
+class Shifts{
 
     constructor(filename){
         $.getJSON(filename, (json) => {
-            this.rules = json;
+            this.shifts = json;
         });
     }
 

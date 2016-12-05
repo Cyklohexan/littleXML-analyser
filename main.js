@@ -5,7 +5,10 @@
 $(document).ready( function() {
     const button = $('#magic');
 
-    var rules = new Rules('rules.json');
+    var rulesObj = new Rules('rules.json');
+    var shiftsObj = new Shifts('tableShifts.json');
+    console.log(shiftsObj);
+
 
     button.click(function() {
         const area = $('#input-area')[0];
