@@ -32,18 +32,18 @@ class SyntaxParser {
 
         while ((this.inputStack.length !== 0) && (this.parsingStack.length !== 0)) {
 
-            outputArea.value += 'Input: '
+            outputArea.value += 'Input: ';
             for(var y = this.inputStack.length - 1; y>= 0; y--){
                 outputArea.value += this.inputStack[y].key + ' ';
             }
-            outputArea.value += '\n'
+            outputArea.value += '\n';
 
             outputArea.value += 'Stack: '
             for(var z = this.parsingStack.length - 1; z>= 0; z--){
                 console.log(this.parsingStack[z]);
                 outputArea.value += this.parsingStack[z] + ' ';
             }
-            outputArea.value += '\n'
+            outputArea.value += '\n';
 
 
 
@@ -81,7 +81,7 @@ class SyntaxParser {
             for(var t = 0; t < 175; t++){
                 outputArea.value += '-';
             }
-            outputArea.value += '\n'
+            outputArea.value += '\n';
 
         }
 
