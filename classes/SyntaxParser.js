@@ -27,4 +27,44 @@ class SyntaxParser {
 
     }
 
+    checkSyntax() {
+
+        while ((this.inputStack.length !== 0) && (this.parsingStack.length !== 0)) {
+
+            let actualNonTerminal = this.parsingStack.pop();
+            let actualToken = this.inputStack[this.inputStack.length - 1].key;
+
+            if (actualNonTerminal === 'EPSILON') {
+                continue;
+            }
+
+            const ruleRank = this.shifts.shiftsObj[actualNonTerminal].shifts[actualToken];
+            if (!ruleRank) {
+                return false;
+            }
+
+            if (ruleRank === 'A') {
+                this.inputStack.pop();
+                break;
+            }
+            else if (ruleRank === 'z') {
+                this.inputStack.pop();
+            }
+            else {
+                const selectedRule = this.rules.rulesObj[ruleRank];
+
+                for (var i = selectedRule.rightSide.length - 1; i >= 0; i--) {
+                    this.parsingStack.push(selectedRule.rightSide[i]);
+                }
+            }
+
+        }
+
+        const inputStackIsEmpty = this.inputStack.length;
+        const parsingStackIsEmpty = this.parsingStack.length;
+
+        return (!inputStackIsEmpty && !parsingStackIsEmpty) ? true : false;
+
+    }
+
 }

@@ -11,8 +11,8 @@
     {"leftSide": "WORDS2", "shifts": {"LETTER": 14, "DIGIT": 14, "L_PARENTHES": 14, "R_PARENTHES": 14, "STARTTAG": 15}},
     {"leftSide": "NAME", "shifts": {"LETTER": 16, "COLON": 18, "DASH": 17}},
     {"leftSide": "NAMECHAR", "shifts": {"LETTER": 19, "DIGIT": 20, "ENDTAG": 25, "COLON": 24, "DASH": 22, "UNDER": 23, "DOT": 21}},
-    {"leftSide": "NUMBER", "shifts": {"NUMBER": 27}},
-    {"leftSide": "NUMBER2", "shifts": {"NUMBER": 28, "DOT": 29, "XML_END": 29}},
+    {"leftSide": "NUMBER", "shifts": {"DIGIT": 27}},
+    {"leftSide": "NUMBER2", "shifts": {"DIGIT": 28, "DOT": 29, "XML_END": 29}},
     {"leftSide": "WORD", "shifts": {"LETTER": 31, "DIGIT": 31, "L_PARENTHES": 31, "R_PARENTHES": 31}},
     {"leftSide": "WORD2", "shifts": {"LETTER": 32, "DIGIT": 32, "L_PARENTHES": 32, "R_PARENTHES": 32, "STARTTAG": 33}},
     {"leftSide": "CHAR", "shifts": {"LETTER": 34, "DIGIT": 35, "L_PARENTHES": 36, "R_PARENTHES": 37}},
@@ -29,5 +29,5 @@
     {"leftSide": "DOT", "shifts": {"DOT": "z"}},
     {"leftSide": "XML_START", "shifts": {"XML_START": "z"}},
     {"leftSide": "XML_END", "shifts": {"XML_END": "z"}},
-    {"leftSide": "#", "shifts": {"ENDTAG": "A"}}
+    {"leftSide": "#", "shifts": {"FILE_END": "A"}}
 ]}

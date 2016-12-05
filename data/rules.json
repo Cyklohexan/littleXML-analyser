@@ -23,7 +23,7 @@
     {"rank": 22, "leftSide":"NAMECHAR", "rightSide":[  "DASH", "NAMECHAR"]},
     {"rank": 23, "leftSide":"NAMECHAR", "rightSide":[  "UNDER", "NAMECHAR"]},
     {"rank": 24, "leftSide":"NAMECHAR", "rightSide":[  "COLON", "NAMECHAR"]},
-    {"rank": 25, "leftSide":"NAMECHAR", "rightSide":[  "COLON", "EPSILON"]},
+    {"rank": 25, "leftSide":"NAMECHAR", "rightSide":[  "EPSILON"]},
     {"rank": 26, "leftSide":"LETTER", "rightSide":[  "LETTER"]},
     {"rank": 27, "leftSide":"NUMBER", "rightSide":[  "DIGIT", "NUMBER2"]},
     {"rank": 28, "leftSide":"NUMBER2", "rightSide":[  "NUMBER"]},

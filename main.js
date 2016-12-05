@@ -14,10 +14,7 @@ $(document).ready( function() {
 
         rulesObj.convertToObject();
         shiftsObj.convertToObject();
-        console.log(rulesObj);
-        console.log(shiftsObj);
 
-        console.log(area.value);
         var analyzer = new LexicalAnalyser(area.value);
         var result = analyzer.analyze();
 
@@ -29,6 +26,9 @@ $(document).ready( function() {
         var syntaxParser = new SyntaxParser(rulesObj, shiftsObj);
         syntaxParser.initializeStacks(result.tokens);
 
+        const parsingResult = syntaxParser.checkSyntax();
+
+        console.log('Result of syntax and lexical analysis: ' + parsingResult);
     });
 
     console.log('Hello from Thomas and Jakub');
