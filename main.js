@@ -5,8 +5,8 @@
 $(document).ready( function() {
     const button = $('#magic');
 
-    var rulesObj = new Rules('rules.json');
-    var shiftsObj = new Shifts('tableShifts.json');
+    var rulesObj = new Rules('data/rules.json');
+    var shiftsObj = new Shifts('data/tableShifts.json');
 
 
     button.click(function() {
@@ -21,14 +21,13 @@ $(document).ready( function() {
         var analyzer = new LexicalAnalyser(area.value);
         var result = analyzer.analyze();
 
-        result.tokens.forEach( (token) => {
-            console.log(token.key + '  ..  ' + token.value);
-        });
-
+        //prompt all lexical errors to console after lexical analysis is done
         result.errors.forEach( (error) => {
             console.log(error.text + error.position + '.');
         });
 
+        var syntaxParser = new SyntaxParser(rulesObj, shiftsObj);
+        syntaxParser.initializeStacks(result.tokens);
 
     });
 
