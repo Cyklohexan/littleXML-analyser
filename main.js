@@ -7,11 +7,15 @@ $(document).ready( function() {
 
     var rulesObj = new Rules('rules.json');
     var shiftsObj = new Shifts('tableShifts.json');
-    console.log(shiftsObj);
 
 
     button.click(function() {
         const area = $('#input-area')[0];
+
+        rulesObj.convertToObject();
+        shiftsObj.convertToObject();
+        console.log(rulesObj);
+        console.log(shiftsObj);
 
         console.log(area.value);
         var analyzer = new LexicalAnalyser(area.value);
