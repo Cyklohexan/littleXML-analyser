@@ -126,7 +126,7 @@ class LexicalAnalyser {
                             position: i
                         });
                     }
-                    
+
                 }
                 //for declaration closing tag we chose '@' character
                 else if ((this.text[i + 1] === '>')&& (textLength - i >= 2)){
@@ -154,6 +154,7 @@ class LexicalAnalyser {
                         position: i
                     });
                 }
+
             }
             else {
                 errorArray.push({
