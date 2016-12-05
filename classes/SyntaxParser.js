@@ -40,7 +40,6 @@ class SyntaxParser {
 
             outputArea.value += 'Stack: ';
             for(var z = this.parsingStack.length - 1; z>= 0; z--){
-                console.log(this.parsingStack[z]);
                 outputArea.value += this.parsingStack[z] + ' ';
             }
             outputArea.value += '\n';
