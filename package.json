@@ -1,0 +1,23 @@
+{
+  "name": "little-xml",
+  "version": "0.0.0",
+  "description": "sofware\u001b[D\u001b[D\u001b[D\u001b[Dt\u001b[C\u001b[C\u001b[C\u001b[Cware languages project",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyklohexan/littleXML-analyser.git"
+  },
+  "author": "Tomas Zigo & Jakub Vrba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cyklohexan/littleXML-analyser/issues"
+  },
+  "homepage": "https://github.com/Cyklohexan/littleXML-analyser#readme",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.2"
+  }
+}
