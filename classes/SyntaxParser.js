@@ -31,6 +31,10 @@ class SyntaxParser {
         var outputArea = document.getElementById("output-area");
 
         while ((this.inputStack.length !== 0) && (this.parsingStack.length !== 0)) {
+            for(var t = 0; t < 175; t++){
+                outputArea.value += '-';
+            }
+            outputArea.value += '\n';
 
             outputArea.value += 'Input: ';
             for(var y = this.inputStack.length - 1; y>= 0; y--){
@@ -50,12 +54,14 @@ class SyntaxParser {
             let actualToken = this.inputStack[this.inputStack.length - 1].key;
 
             if (actualNonTerminal === 'EPSILON') {
+                outputArea.value += 'Empty symbol skipping \n';
                 continue;
             }
 
             const ruleRank = this.shifts.shiftsObj[actualNonTerminal].shifts[actualToken];
             if (!ruleRank) {
                 outputArea.value += 'Skipping token: ' + actualToken;
+                this.inputStack.pop();
                 continue;
                 //return false;
             }
@@ -78,11 +84,6 @@ class SyntaxParser {
                 }
                 outputArea.value += '\n';
             }
-
-            for(var t = 0; t < 175; t++){
-                outputArea.value += '-';
-            }
-            outputArea.value += '\n';
 
         }
 
