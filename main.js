@@ -5,6 +5,8 @@
 $(document).ready( function() {
     const button = $('#magic');
 
+    var rules = new Rules('rules.json');
+
     button.click(function() {
         const area = $('#input-area')[0];
 
