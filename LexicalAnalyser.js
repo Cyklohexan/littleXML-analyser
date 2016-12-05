@@ -110,7 +110,7 @@ class LexicalAnalyser {
             else if (this.text[i] === '?'){
 
                 //for xml version declaration we chose '#' character
-                if ((this.text[i + 1] === 'x') && (textLength - i > 12)) {
+                if ((this.text[i + 1] === 'x') && (textLength - i >= 12)) {
                     let substring = this.text.substring(i, i + 12);
                     if (substring === '?xmlversion=') {
 
@@ -120,9 +120,16 @@ class LexicalAnalyser {
                         tokenArray.push(token);
                         i += 11;
                     }
+                    else {
+                        errorArray.push({
+                            text: 'Error: Invalid XML document definition at ',
+                            position: i
+                        });
+                    }
+                    
                 }
                 //for declaration closing tag we chose '@' character
-                else if ((this.text[i + 1] === '>')&& (textLength - i > 2)){
+                else if ((this.text[i + 1] === '>')&& (textLength - i >= 2)){
                     let substring = this.text.substring(i, i + 2);
                     if (substring === '?>') {
 
@@ -133,6 +140,13 @@ class LexicalAnalyser {
 
                         i += 1;
                     }
+                    else {
+                        errorArray.push({
+                            text: 'Error: Invalid XML document definition at ',
+                            position: i
+                        });
+                    }
+
                 }
                 else {
                     errorArray.push({
