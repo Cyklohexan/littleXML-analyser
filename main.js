@@ -11,6 +11,7 @@ $(document).ready( function() {
 
     button.click(function() {
         const area = $('#input-area')[0];
+        document.getElementById("output-area").value = '';
 
         rulesObj.convertToObject();
         shiftsObj.convertToObject();
