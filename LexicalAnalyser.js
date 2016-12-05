@@ -150,6 +150,12 @@ class LexicalAnalyser {
 
         }
 
+        let token = this.getTokenTemplate();
+        token.key = 'FILE_END';
+        token.value = '$';
+
+        tokenArray.push(token);
+
         return {
             tokens: tokenArray,
             errors: errorArray
