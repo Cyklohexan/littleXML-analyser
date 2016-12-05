@@ -56,7 +56,9 @@ class SyntaxParser {
 
             const ruleRank = this.shifts.shiftsObj[actualNonTerminal].shifts[actualToken];
             if (!ruleRank) {
-                return false;
+                outputArea.value += 'Skipping token: ' + actualToken;
+                continue;
+                //return false;
             }
 
             if (ruleRank === 'A') {
