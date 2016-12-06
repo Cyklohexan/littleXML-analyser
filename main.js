@@ -22,16 +22,23 @@ $(document).ready( function() {
         var result = analyzer.analyze();
 
         //prompt all lexical errors to console after lexical analysis is done
-        result.errors.forEach( (error) => {
-            outputArea.value+= error.text + error.position + '.\n';
-        });
+        // result.errors.forEach( (error) => {
+        //     outputArea.value+= error.text + error.position + '.\n';
+        // });
 
         var syntaxParser = new SyntaxParser(rulesObj, shiftsObj);
         syntaxParser.initializeStacks(result.tokens);
 
         const parsingResult = syntaxParser.checkSyntax();
 
-        outputArea.value += 'Result of syntax and lexical analysis: ' + parsingResult + '\n';
+        const lexicalResult = (!result.errors.length);
+        outputArea.value += 'Result of lexical analysis: ' + lexicalResult + '\n';
+        if (!lexicalResult) {
+            result.errors.forEach( (error) => {
+                outputArea.value += error.text + error.position + '\n';
+            });
+        }
+        outputArea.value += 'Result of syntax analysis: ' + parsingResult + '\n';
     });
 
     console.log('Hello from Thomas and Jakub');
