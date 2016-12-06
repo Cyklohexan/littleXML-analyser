@@ -11,7 +11,8 @@ class LexicalAnalyser {
     getTokenTemplate() {
         var token = {
           key: '',
-          value: ''
+          value: '',
+          position: 0
         };
 
         return token;
@@ -44,66 +45,77 @@ class LexicalAnalyser {
             if ( ((actualCharOrd >= 97) && (actualCharOrd <= 122)) || ((actualCharOrd >= 65) && (actualCharOrd <= 90)) ) {
                 token.key = 'LETTER';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if((actualCharOrd >= 48) && (actualCharOrd <= 57)) {
                 token.key = 'DIGIT';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '(') {
                 token.key = 'L_PARENTHES';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === ')') {
                 token.key = 'R_PARENTHES';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '<') {
                 token.key = 'STARTTAG';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '>') {
                 token.key = 'ENDTAG';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '/') {
                 token.key = 'SLASH';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === ':') {
                 token.key = 'COLON';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '.') {
                 token.key = 'DOT';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '-') {
                 token.key = 'DASH';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
             else if (this.text[i] === '_') {
                 token.key = 'UNDER';
                 token.value = this.text[i];
+                token.position = i;
 
                 tokenArray.push(token);
             }
@@ -116,6 +128,7 @@ class LexicalAnalyser {
 
                         token.key = 'XML_START';
                         token.value = substring;
+                        token.position = i;
 
                         tokenArray.push(token);
                         i += 11;
@@ -135,6 +148,7 @@ class LexicalAnalyser {
 
                         token.key = 'XML_END';
                         token.value = substring;
+                        token.position = i;
 
                         tokenArray.push(token);
 
@@ -168,6 +182,7 @@ class LexicalAnalyser {
         let token = this.getTokenTemplate();
         token.key = 'FILE_END';
         token.value = '$';
+        token.position = this.text.length;
 
         tokenArray.push(token);
 

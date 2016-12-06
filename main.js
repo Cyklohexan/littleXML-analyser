@@ -38,7 +38,23 @@ $(document).ready( function() {
                 outputArea.value += error.text + error.position + '\n';
             });
         }
-        outputArea.value += 'Result of syntax analysis: ' + parsingResult + '\n';
+
+        if (parsingResult.errors.length) {
+            parsingResult.errors.forEach( (error) => {
+                outputArea.value += error.text + '\n';
+            });
+        }
+
+        if (parsingResult.result && parsingResult.errors.length) {
+            outputArea.value += 'Syntax analysis contains errors, but accepting input.\n';
+        }
+        else if (parsingResult.result) {
+            outputArea.value += 'Result of syntax analysis: ' + parsingResult.result + '\n';
+        }
+        else {
+            outputArea.value += 'Result of syntax analysis: ' + parsingResult.result + '\n';
+        }
+
     });
 
     console.log('Hello from Thomas and Jakub');

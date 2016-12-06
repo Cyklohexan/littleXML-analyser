@@ -29,6 +29,7 @@ class SyntaxParser {
 
     checkSyntax() {
         var outputArea = document.getElementById("output-area");
+        var errors = [];
 
         while ((this.inputStack.length !== 0) && (this.parsingStack.length !== 0)) {
             for(var t = 0; t < 175; t++){
@@ -61,8 +62,16 @@ class SyntaxParser {
             const ruleRank = this.shifts.shiftsObj[actualNonTerminal].shifts[actualToken];
             if (!ruleRank) {
                 outputArea.value += 'Skipping token: ' + actualToken + '\n';
+
+                const position = this.inputStack[this.inputStack.length - 1].position;
+
+                errors.push({
+                    text: 'Invalid token, cannot match any rule. Token at ' + position
+                });
+
                 this.inputStack.pop();
                 this.parsingStack.push(actualNonTerminal);
+
                 continue;
                 //return false;
             }
@@ -91,7 +100,11 @@ class SyntaxParser {
         const inputStackIsEmpty = this.inputStack.length;
         const parsingStackIsEmpty = this.parsingStack.length;
 
-        return (!inputStackIsEmpty && !parsingStackIsEmpty) ? true : false;
+        const result = (!inputStackIsEmpty && !parsingStackIsEmpty) ? true : false;
+        return {
+            result: result,
+            errors: errors
+        };
 
     }
 
